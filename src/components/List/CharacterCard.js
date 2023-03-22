@@ -1,7 +1,9 @@
+import { Link } from 'react-router-dom';
+
 const Character = ({ eachCharacter }) => {
   return (
     <li className="card">
-      <a href=".">
+      <Link to={`/character/${eachCharacter.id}`}>
         <img
           className="card__img"
           src={
@@ -14,7 +16,7 @@ const Character = ({ eachCharacter }) => {
         ></img>
         <h4 className="card__title">{eachCharacter.name}</h4>
         <p className="card__description">{eachCharacter.species}</p>
-      </a>
+      </Link>
     </li>
   );
 };

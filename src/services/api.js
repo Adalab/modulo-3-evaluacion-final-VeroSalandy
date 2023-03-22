@@ -1,6 +1,6 @@
-const getDataApi = () => {
-  const url = 'https://hp-api.onrender.com/api/characters/house/gryffindor';
-  return fetch(url)
+const getDataApi = (houseFilter) => {
+  const urlApi = `https://hp-api.onrender.com/api/characters/house/${houseFilter}`;
+  return fetch(urlApi)
     .then((response) => response.json())
     .then((data) => {
       const cleanData = data.map((eachCharacter) => {

@@ -4,10 +4,9 @@ const FilterCharacterName = ({ handleNameFilter, nameFilter }) => {
     handleNameFilter(ev.target.value);
   };
   return (
-    <>
-      <label className="label-text" htmlFor="searchCharacter">
-        Search by character:
-      </label>
+    <fieldset>
+      <h2> Search by character:</h2>
+      <label className="label-text" htmlFor="searchCharacter"></label>
       <input
         className="header__search"
         autoComplete="off"
@@ -18,7 +17,7 @@ const FilterCharacterName = ({ handleNameFilter, nameFilter }) => {
         value={nameFilter}
         id="searchCharacter"
       />
-    </>
+    </fieldset>
   );
 };
 
