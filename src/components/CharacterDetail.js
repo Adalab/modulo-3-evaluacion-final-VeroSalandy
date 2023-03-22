@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import Error404 from './Error404';
 
 const CharacterDetail = ({ characterFind }) => {
   if (characterFind !== undefined) {
@@ -35,6 +36,7 @@ const CharacterDetail = ({ characterFind }) => {
       </>
     );
   }
+  return <Error404></Error404>;
 };
 
 export default CharacterDetail;
