@@ -9,7 +9,7 @@ const Character = ({ eachCharacter }) => {
           src={
             eachCharacter.image
               ? eachCharacter.image
-              : `https://via.placeholder.com/210x295/FFC0CB/?text=${eachCharacter.name}`
+              : `https://via.placeholder.com/210x295/4f738e/?text=${eachCharacter.name}`
           }
           alt={` Foto of  ${eachCharacter.name}`}
           title={`Foto of ${eachCharacter.name}`}

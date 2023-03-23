@@ -1,20 +1,24 @@
 import { Link } from 'react-router-dom';
 import Error404 from './Error404';
+import PageLoader from './PageLoader';
 
-const CharacterDetail = ({ characterFind }) => {
+const CharacterDetail = ({ characterFind, isLoading }) => {
+  if (isLoading === true) {
+    return <PageLoader></PageLoader>;
+  }
   if (characterFind !== undefined) {
     return (
       <>
-        <Link to="/">
-          <button>Back</button>
+        <Link to="/" className="div">
+          <button className="button">Back</button>
         </Link>
-        <article className="card">
+        <article className="card__details">
           <img
             className="card__img"
             src={
               characterFind.image
                 ? characterFind.image
-                : `https://via.placeholder.com/210x295/FFC0CB/?text=${characterFind.name}`
+                : `https://via.placeholder.com/210x295/4f738e/?text=${characterFind.name}`
             }
             alt={` Foto of  ${characterFind.name}`}
           ></img>
@@ -30,7 +34,7 @@ const CharacterDetail = ({ characterFind }) => {
             {characterFind.alive === true ? ' alive 💖' : ' deceased 💀'}
           </p>
           <p className="card__description">
-            Alternanative Names: {characterFind.alternateNames}
+            Alternative names: {characterFind.alternateNames}
           </p>
         </article>
       </>

@@ -1,13 +1,7 @@
 /* SECCIÓN DE IMPORT */
 import '../styles/App.scss';
 import { useEffect, useState } from 'react';
-import {
-  matchPath,
-  Route,
-  Routes,
-  useLocation,
-  useParams,
-} from 'react-router-dom';
+import { matchPath, Route, Routes, useLocation } from 'react-router-dom';
 import getDataApi from '../services/api';
 import ListCharacter from './List/ListCharacter';
 import Filters from './Filters/Filters';
@@ -22,12 +16,14 @@ function App() {
   const [nameFilter, setNameFilter] = useState('');
   const [houseFilter, setHouseFilter] = useState('gryffindor');
   const [genderFilter, setGenderFilter] = useState('all');
+  const [isLoading, setIsLoading] = useState(true);
 
   /* EFECTOS (código cuando carga la página) */
   useEffect(() => {
     getDataApi(houseFilter).then((cleanData) => {
       //console.log(cleanData);
       setCharacterListArray(cleanData);
+      setIsLoading(false);
     });
   }, [houseFilter]);
 
@@ -51,7 +47,7 @@ function App() {
   };
 
   /* FUNCIONES Y VARIABLES AUXILIARES PARA PINTAR EL HTML */
-  const characterFiltered = characterListArray
+  let characterFiltered = characterListArray
 
     .filter((eachCharacter) => {
       return eachCharacter.name
@@ -60,7 +56,8 @@ function App() {
     })
     .filter((eachPerson) => {
       return genderFilter === 'all' ? true : eachPerson.gender === genderFilter;
-    });
+    })
+    .sort((a, b) => a.name.localeCompare(b.name));
 
   const { pathname } = useLocation();
   const dataUrl = matchPath('/character/:id', pathname);
@@ -72,9 +69,7 @@ function App() {
   /* HTML */
   return (
     <>
-      <header className="header">
-        <h1 className="App">Harry Potter</h1>
-      </header>
+      <header className="header"></header>
       <main className="main">
         <Routes>
           <Route
@@ -92,6 +87,7 @@ function App() {
                 ></Filters>
                 <ListCharacter
                   characterFiltered={characterFiltered}
+                  isLoading={isLoading}
                 ></ListCharacter>
               </>
             }
@@ -99,7 +95,10 @@ function App() {
           <Route
             path="/character/:id"
             element={
-              <CharacterDetail characterFind={characterFind}></CharacterDetail>
+              <CharacterDetail
+                characterFind={characterFind}
+                isLoading={isLoading}
+              ></CharacterDetail>
             }
           ></Route>
           <Route path="*" element={<Error404></Error404>}></Route>

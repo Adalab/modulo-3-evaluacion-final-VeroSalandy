@@ -1,0 +1,55 @@
+.main {
+    display: flex;
+    gap: 20px;
+    background-image: url('../../images/Backgrounds.jpeg');
+    background-position: center;
+    background-size: cover;
+}
+
+.main .filter {
+    border-radius: 0.8rem;
+    padding: 10px;
+}
+
+.list {
+    padding: 10px;
+}
+
+.card {
+    width: 50%;
+}
+
+.card__details {
+    width: 300px;
+    border: solid 2px rgb(168, 242, 217);
+    border-radius: 6px;
+    background-color: rgb(191, 192, 201);
+}
+
+.div {
+    width: 150px
+}
+
+.button {
+    width: 100px;
+    height: 40px;
+    border-radius: 50px;
+    background-color: rgb(191, 192, 201);
+    margin-top: 15px;
+    margin-left: 15px;
+}
+
+.error {
+    margin: 20px;
+    text-align: center;
+}
+
+.error__desc {
+    color: silver;
+    margin-bottom: 20px;
+}
+
+.fieldset__title {
+    color: silver;
+    margin: 10px;
+}

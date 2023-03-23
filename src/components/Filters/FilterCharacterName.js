@@ -1,11 +1,12 @@
+import PropTypes from 'prop-types';
+
 const FilterCharacterName = ({ handleNameFilter, nameFilter }) => {
   const handleChange = (ev) => {
-    // THIS HANDLECHANGE IS TO BE ABLE TO GET VALUE WHEN SOMETHINGS CHANGES
     handleNameFilter(ev.target.value);
   };
   return (
-    <fieldset>
-      <h2> Search by character:</h2>
+    <fieldset className="fieldset">
+      <h2 className="fieldset__title"> Search by character:</h2>
       <label className="label-text" htmlFor="searchCharacter"></label>
       <input
         className="header__search"
@@ -19,6 +20,11 @@ const FilterCharacterName = ({ handleNameFilter, nameFilter }) => {
       />
     </fieldset>
   );
+};
+
+FilterCharacterName.propTypes = {
+  handleNameFilter: PropTypes.func.isRequired,
+  nameFilter: PropTypes.string.isRequired,
 };
 
 export default FilterCharacterName;

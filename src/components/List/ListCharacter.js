@@ -1,11 +1,13 @@
 import ErrorMessageCharacter from '../ErrorMessageCharacter';
+import PageLoader from '../PageLoader';
 import CharacterCard from './CharacterCard';
 
-const ListCharacter = ({ characterFiltered, nameFilter }) => {
+const ListCharacter = ({ characterFiltered, isLoading }) => {
+  if (isLoading === true) {
+    return <PageLoader></PageLoader>;
+  }
   if (characterFiltered.length === 0) {
-    return (
-      <ErrorMessageCharacter nameFilter={nameFilter}></ErrorMessageCharacter>
-    );
+    return <ErrorMessageCharacter></ErrorMessageCharacter>;
   }
   const dataHtml = characterFiltered.map((eachCharacter) => {
     return (
@@ -24,5 +26,3 @@ const ListCharacter = ({ characterFiltered, nameFilter }) => {
 };
 
 export default ListCharacter;
-
-// if (characterFiltered.length === 0 && nameFilter !== '')

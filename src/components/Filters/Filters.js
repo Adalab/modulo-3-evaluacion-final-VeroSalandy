@@ -1,6 +1,7 @@
 import FilterCharacterName from './FilterCharacterName';
 import FilterHouse from './FilterHouse';
 import FilterGender from './FilterGender';
+import PropTypes from 'prop-types';
 
 const Filters = ({
   handleNameFilter,
@@ -30,7 +31,7 @@ const Filters = ({
           handleSelectGenderFilter={handleSelectGenderFilter}
           genderFilter={genderFilter}
         ></FilterGender>
-        <button className="reset-button" onClick={handleReset}>
+        <button className="button" onClick={handleReset}>
           Reset all filters
         </button>
       </form>
@@ -38,4 +39,13 @@ const Filters = ({
   );
 };
 
+Filters.propTypes = {
+  handleNameFilter: PropTypes.func.isRequired,
+  nameFilter: PropTypes.string.isRequired,
+  handleSelectHouseFilter: PropTypes.func.isRequired,
+  houseFilter: PropTypes.string.isRequired,
+  handleSelectGenderFilter: PropTypes.func.isRequired,
+  genderFilter: PropTypes.string.isRequired,
+  handleReset: PropTypes.func.isRequired,
+};
 export default Filters;
